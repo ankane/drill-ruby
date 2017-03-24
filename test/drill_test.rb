@@ -13,6 +13,10 @@ class DrillTest < Minitest::Test
     assert_equal ["state", "capital"], drill.query(good_query).first.keys
   end
 
+  def test_same_name_columns
+    assert_equal ["state", "state0"], drill.query(good_query("state, state")).first.keys
+  end
+
   def test_bad_query
     error = assert_raises(Drill::Error) { drill.query("SELECT * FROM bad") }
     assert_includes error.message, "Table 'bad' not found"
@@ -23,9 +27,9 @@ class DrillTest < Minitest::Test
     assert_includes error.message, "Failed to open TCP connection"
   end
 
-  def good_query
+  def good_query(columns = "*")
     dir = File.expand_path(File.dirname(__FILE__))
-    "SELECT * FROM dfs.`#{dir}/capitals.csvh`"
+    "SELECT #{columns} FROM dfs.`#{dir}/capitals.csvh`"
   end
 
   def drill
