@@ -29,6 +29,12 @@ class Drill
       raise Drill::Error, body["errorMessage"].split("\n")[0]
     end
 
-    body["rows"]
+    # return columns in order
+    result = []
+    columns = body["columns"]
+    body["rows"].each do |row|
+      result << Hash[columns.map { |c| [c, row[c]] }]
+    end
+    result
   end
 end

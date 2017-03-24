@@ -9,6 +9,10 @@ class DrillTest < Minitest::Test
     assert_equal expected, drill.query(good_query)
   end
 
+  def test_column_order
+    assert_equal ["state", "capital"], drill.query(good_query).first.keys
+  end
+
   def test_bad_query
     error = assert_raises(Drill::Error) { drill.query("SELECT * FROM bad") }
     assert_includes error.message, "Table 'bad' not found"
