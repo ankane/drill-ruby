@@ -12,7 +12,8 @@ class Drill
 
   def initialize(url: nil)
     url ||= ENV["DRILL_URL"] || "http://localhost:8047"
-    @uri = URI.parse("#{url}/query.json")
+    # strip trailing slash if exists
+    @uri = URI.parse("#{url.sub(/\/\z/, "")}/query.json")
     @http = Net::HTTP.new(@uri.host, @uri.port)
   end
 
