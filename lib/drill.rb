@@ -5,6 +5,11 @@ require "drill/version"
 class Drill
   class Error < StandardError; end
 
+  HEADERS = {
+    "Content-Type" => "application/json",
+    "Accept" => "application/json"
+  }
+
   def initialize(url: nil)
     url ||= ENV["DRILL_URL"] || "http://localhost:8047"
     @uri = URI.parse("#{url}/query.json")
@@ -12,14 +17,13 @@ class Drill
   end
 
   def query(statement)
-    header = {"Content-Type" => "application/json", "Accept" => "application/json"}
     data = {
       queryType: "sql",
       query: statement
     }
 
     begin
-      response = @http.post(@uri.request_uri, data.to_json, header)
+      response = @http.post(@uri.request_uri, data.to_json, HEADERS)
     rescue Errno::ECONNREFUSED => e
       raise Drill::Error, e.message
     end
