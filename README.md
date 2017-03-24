@@ -18,8 +18,15 @@ gem 'drill-sergeant'
 
 ## How to Use
 
+Create a client
+
 ```ruby
 drill = Drill.new(url: "http://localhost:8047")
+```
+
+And query away
+
+```ruby
 drill.query("SELECT * FROM dfs.`/path/to/some/file.csvh`")
 ```
 
