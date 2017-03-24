@@ -6,11 +6,11 @@ class DrillTest < Minitest::Test
       {"state" => "Ohio", "capital" => "Columbus"},
       {"state" => "California", "capital" => "Sacramento"}
     ]
-    assert_equal expected, drill.query(good_query)
+    assert_equal expected, drill.query(good_query)["rows"]
   end
 
   def test_column_order
-    assert_equal ["state", "capital"], drill.query(good_query).first.keys
+    assert_equal ["state", "capital"], drill.query(good_query)["columns"]
   end
 
   def test_bad_query

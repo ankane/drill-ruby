@@ -1,6 +1,6 @@
-## 0.1.1 [unreleased]
+## 0.2.0 [unreleased]
 
-- Return columns in correct order
+- Return rows and columns
 
 ## 0.1.0
 
