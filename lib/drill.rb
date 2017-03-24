@@ -33,7 +33,7 @@ class Drill
     result = []
     columns = body["columns"]
     body["rows"].each do |row|
-      result << Hash[columns.map { |c| [c, row[c]] }]
+      result << columns.each_with_object({}) { |c, memo| memo[c] = row[c] }
     end
     result
   end
