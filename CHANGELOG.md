@@ -1,3 +1,7 @@
+## 0.1.2 [unreleased]
+
+- Added support for HTTPS
+
 ## 0.1.1
 
 - Return columns in correct order

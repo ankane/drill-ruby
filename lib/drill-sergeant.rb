@@ -15,6 +15,7 @@ class Drill
     # strip trailing slash if exists
     @uri = URI.parse("#{url.sub(/\/\z/, "")}/query.json")
     @http = Net::HTTP.new(@uri.host, @uri.port)
+    @http.use_ssl = true if @uri.scheme == "https"
   end
 
   def query(statement)
