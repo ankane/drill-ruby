@@ -16,6 +16,8 @@ class Drill
     @uri = URI.parse("#{url.sub(/\/\z/, "")}/query.json")
     @http = Net::HTTP.new(@uri.host, @uri.port)
     @http.use_ssl = true if @uri.scheme == "https"
+    @http.open_timeout = 3
+    @http.read_timeout = 5
   end
 
   def query(statement)

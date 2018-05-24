@@ -1,6 +1,7 @@
 ## 0.1.2 [unreleased]
 
 - Added support for HTTPS
+- Added timeouts
 
 ## 0.1.1
 
