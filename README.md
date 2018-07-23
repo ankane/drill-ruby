@@ -32,7 +32,7 @@ drill.query("SELECT * FROM dfs.`/path/to/some/file.csvh`")
 
 ## Reference
 
-Set timeouts [master]
+Set timeouts
 
 ```ruby
 Drill.new(open_timeout: 5, read_timeout: 120)
