@@ -10,14 +10,14 @@ class Drill
     "Accept" => "application/json"
   }
 
-  def initialize(url: nil)
+  def initialize(url: nil, open_timeout: 3, read_timeout: 600)
     url ||= ENV["DRILL_URL"] || "http://localhost:8047"
     # strip trailing slash if exists
     @uri = URI.parse("#{url.sub(/\/\z/, "")}/query.json")
     @http = Net::HTTP.new(@uri.host, @uri.port)
     @http.use_ssl = true if @uri.scheme == "https"
-    @http.open_timeout = 3
-    @http.read_timeout = 5
+    @http.open_timeout = open_timeout if open_timeout
+    @http.read_timeout = read_timeout if read_timeout
   end
 
   def query(statement)

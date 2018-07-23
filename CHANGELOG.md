@@ -1,7 +1,7 @@
 ## 0.1.2 [unreleased]
 
 - Added support for HTTPS
-- Added timeouts
+- Added `open_timeout` and `read_timeout` options
 
 ## 0.1.1
 

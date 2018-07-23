@@ -30,6 +30,14 @@ And query away
 drill.query("SELECT * FROM dfs.`/path/to/some/file.csvh`")
 ```
 
+## Reference
+
+Set timeouts [master]
+
+```ruby
+Drill.new(open_timeout: 5, read_timeout: 120)
+```
+
 ## History
 
 View the [changelog](https://github.com/ankane/drill-sergeant/blob/master/CHANGELOG.md)

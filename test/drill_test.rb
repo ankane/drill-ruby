@@ -19,7 +19,7 @@ class DrillTest < Minitest::Test
 
   def test_bad_query
     error = assert_raises(Drill::Error) { drill.query("SELECT * FROM bad") }
-    assert_includes error.message, "Table 'bad' not found"
+    assert_includes error.message, "Object 'bad' not found"
   end
 
   def test_bad_connection
