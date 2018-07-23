@@ -10,7 +10,7 @@ class Drill
     "Accept" => "application/json"
   }
 
-  def initialize(url: nil, open_timeout: 3, read_timeout: 600)
+  def initialize(url: nil, open_timeout: 3, read_timeout: nil)
     url ||= ENV["DRILL_URL"] || "http://localhost:8047"
     # strip trailing slash if exists
     @uri = URI.parse("#{url.sub(/\/\z/, "")}/query.json")
