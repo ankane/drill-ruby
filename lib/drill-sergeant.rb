@@ -16,7 +16,8 @@ class Drill
 
   def initialize(url: nil, open_timeout: 3, read_timeout: nil)
     url ||= ENV["DRILL_URL"] || "http://localhost:8047"
-    @uri = URI.parse(url)
+    # remove trailing slash
+    @uri = URI.parse(url.sub(/\/\z/, ""))
     @http = Net::HTTP.new(@uri.host, @uri.port)
     @http.use_ssl = true if @uri.scheme == "https"
     @http.open_timeout = open_timeout if open_timeout
@@ -29,7 +30,7 @@ class Drill
       query: statement
     }
 
-    body = post("/query.json", data)
+    body = post("query.json", data)
 
     # return columns in order
     result = []
@@ -41,38 +42,38 @@ class Drill
   end
 
   def profiles
-    get("/profiles.json")
+    get("profiles.json")
   end
 
   def storage(name = nil)
-    path = name ? "/storage/#{escape_path(name)}.json" : "/storage.json"
+    path = name ? "storage/#{escape_path(name)}.json" : "storage.json"
     get(path)
   end
 
   def cluster
-    get("/cluster.json")
+    get("cluster.json")
   end
 
   def metrics
     # no .json suffix
-    get("/status/metrics")
+    get("status/metrics")
   end
 
   def options
-    get("/options.json")
+    get("options.json")
   end
 
   private
 
   def get(path)
     handle_response do
-      @http.get(path, HEADERS)
+      @http.get("#{@uri.request_uri}#{path}", HEADERS)
     end
   end
 
   def post(path, data)
     handle_response do
-      @http.post(path, data.to_json, HEADERS)
+      @http.post("#{@uri.request_uri}#{path}", data.to_json, HEADERS)
     end
   end
 
