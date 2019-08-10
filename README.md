@@ -39,6 +39,12 @@ Get profiles
 drill.profiles
 ```
 
+Get profile by query id
+
+```ruby
+drill.profiles(query_id)
+```
+
 Get storage
 
 ```ruby

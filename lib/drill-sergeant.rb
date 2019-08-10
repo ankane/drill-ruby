@@ -41,8 +41,9 @@ class Drill
     result
   end
 
-  def profiles
-    get("profiles.json")
+  def profiles(query_id = nil)
+    path = query_id ? "profiles/#{escape_path(query_id)}.json" : "profiles.json"
+    get(path)
   end
 
   def storage(name = nil)

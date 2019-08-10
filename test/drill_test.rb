@@ -32,6 +32,12 @@ class DrillTest < Minitest::Test
     assert response["finishedQueries"]
   end
 
+  def test_profiles_query_id
+    query_id = drill.profiles["finishedQueries"][0]["queryId"]
+    response = drill.profiles(query_id)
+    assert response
+  end
+
   def test_storage
     assert_kind_of Array, drill.storage
   end
