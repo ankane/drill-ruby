@@ -30,6 +30,32 @@ And query away
 drill.query("SELECT * FROM dfs.`/path/to/some/file.csvh`")
 ```
 
+## Endpoints [master]
+
+Get profiles
+
+```ruby
+drill.profiles
+```
+
+Get storage
+
+```ruby
+drill.storage
+```
+
+Get cluster info
+
+```ruby
+drill.cluster
+```
+
+Get options
+
+```ruby
+drill.options
+```
+
 ## Reference
 
 Set timeouts

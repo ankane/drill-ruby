@@ -27,6 +27,24 @@ class DrillTest < Minitest::Test
     assert_includes error.message, "Failed to open TCP connection"
   end
 
+  def test_profiles
+    assert drill.profiles
+  end
+
+  def test_storage
+    assert drill.storage
+  end
+
+  def test_cluster
+    assert drill.cluster
+  end
+
+  def test_options
+    assert drill.options
+  end
+
+  private
+
   def good_query(columns: "*")
     dir = File.expand_path(File.dirname(__FILE__))
     "SELECT #{columns} FROM dfs.`#{dir}/capitals.csvh`"
