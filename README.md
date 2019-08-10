@@ -13,7 +13,7 @@ brew install apache-drill
 drill-embedded
 ```
 
-Then add this line to your application’s Gemfile:
+And add this line to your application’s Gemfile:
 
 ```ruby
 gem 'drill-sergeant'
