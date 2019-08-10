@@ -49,7 +49,7 @@ class Drill
   end
 
   def storage(name = nil)
-    path = name ? "/storage/#{CGI.escape(name)}.json" : "/storage.json"
+    path = name ? "/storage/#{escape_path(name)}.json" : "/storage.json"
     get(path)
   end
 
@@ -88,5 +88,9 @@ class Drill
     end
 
     JSON.parse(response.body)
+  end
+
+  def escape_path(path)
+    CGI.escape(path).gsub("+", "%20")
   end
 end

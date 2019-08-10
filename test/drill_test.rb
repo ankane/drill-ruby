@@ -41,6 +41,14 @@ class DrillTest < Minitest::Test
     assert_equal "cp", response["name"]
   end
 
+  def test_storage_name_invalid
+    response = drill.storage("hello world")
+    assert_nil response["config"]
+
+    response = drill.storage("hello&?world")
+    assert_nil response["config"]
+  end
+
   def test_cluster
     response = drill.cluster
     assert response["drillbits"]
