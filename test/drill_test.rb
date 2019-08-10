@@ -28,7 +28,8 @@ class DrillTest < Minitest::Test
   end
 
   def test_profiles
-    assert_kind_of Hash, drill.profiles
+    response = drill.profiles
+    assert response["finishedQueries"]
   end
 
   def test_storage
@@ -36,20 +37,23 @@ class DrillTest < Minitest::Test
   end
 
   def test_storage_name
-    data = drill.storage("cp")
-    assert_equal "cp", data["name"]
+    response = drill.storage("cp")
+    assert_equal "cp", response["name"]
   end
 
   def test_cluster
-    assert_kind_of Hash, drill.cluster
+    response = drill.cluster
+    assert response["drillbits"]
   end
 
   def test_metrics
-    assert_kind_of Hash, drill.metrics
+    response = drill.metrics
+    assert response["version"]
   end
 
   def test_options
-    assert_kind_of Array, drill.options
+    response = drill.options
+    assert_kind_of Array, response
   end
 
   private
