@@ -1,5 +1,9 @@
+# dependencies
+require "cgi"
 require "json"
 require "net/http"
+
+# modules
 require "drill/version"
 
 class Drill
@@ -44,8 +48,9 @@ class Drill
     get("/profiles.json")
   end
 
-  def storage
-    get("/storage.json")
+  def storage(name = nil)
+    path = name ? "/storage/#{CGI.escape(name)}.json" : "/storage.json"
+    get(path)
   end
 
   def cluster

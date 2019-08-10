@@ -35,6 +35,11 @@ class DrillTest < Minitest::Test
     assert_kind_of Array, drill.storage
   end
 
+  def test_storage_name
+    data = drill.storage("cp")
+    assert_equal "cp", data["name"]
+  end
+
   def test_cluster
     assert_kind_of Hash, drill.cluster
   end

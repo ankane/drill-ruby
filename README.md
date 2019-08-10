@@ -45,6 +45,12 @@ Get storage
 drill.storage
 ```
 
+Get storage by name
+
+```ruby
+drill.storage(name)
+```
+
 Get cluster info
 
 ```ruby
