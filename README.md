@@ -33,7 +33,7 @@ And query away
 drill.query("SELECT * FROM dfs.`/path/to/some/file.csvh`")
 ```
 
-## Endpoints [master]
+## Endpoints
 
 [API docs](https://drill.apache.org/docs/rest-api-introduction/)
 
