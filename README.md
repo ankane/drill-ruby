@@ -2,6 +2,8 @@
 
 Ruby client for Apache Drill
 
+[![Build Status](https://travis-ci.org/ankane/drill-sergeant.svg?branch=master)](https://travis-ci.org/ankane/drill-sergeant)
+
 ## Installation
 
 First, [install Apache Drill](https://drill.apache.org/docs/installing-drill-on-linux-and-mac-os-x/). For Homebrew, use:
