@@ -74,7 +74,7 @@ class DrillTest < Minitest::Test
   private
 
   def good_query(columns: "*")
-    dir = File.expand_path(File.dirname(__FILE__))
+    dir = File.expand_path(__dir__)
     "SELECT #{columns} FROM dfs.`#{dir}/capitals.csvh`"
   end
 
