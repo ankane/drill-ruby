@@ -28,19 +28,19 @@ class DrillTest < Minitest::Test
   end
 
   def test_profiles
-    assert drill.profiles
+    assert_kind_of Hash, drill.profiles
   end
 
   def test_storage
-    assert drill.storage
+    assert_kind_of Array, drill.storage
   end
 
   def test_cluster
-    assert drill.cluster
+    assert_kind_of Hash, drill.cluster
   end
 
   def test_options
-    assert drill.options
+    assert_kind_of Array, drill.options
   end
 
   private
