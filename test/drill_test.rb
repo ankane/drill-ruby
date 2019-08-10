@@ -33,6 +33,7 @@ class DrillTest < Minitest::Test
   end
 
   def test_profiles_query_id
+    drill.query("SELECT 1")
     query_id = drill.profiles["finishedQueries"][0]["queryId"]
     response = drill.profiles(query_id)
     assert response
