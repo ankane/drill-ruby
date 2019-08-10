@@ -31,10 +31,6 @@ class Drill
 
     body = post("/query.json", data)
 
-    if body["errorMessage"]
-      raise Drill::Error, body["errorMessage"].split("\n")[0]
-    end
-
     # return columns in order
     result = []
     columns = body["columns"]
@@ -85,6 +81,12 @@ class Drill
       response = yield
     rescue Errno::ECONNREFUSED => e
       raise Drill::Error, e.message
+    end
+
+    unless response.kind_of?(Net::HTTPSuccess)
+      body = JSON.parse(response.body) rescue nil
+      message = body["errorMessage"] || "Bad response: #{response.code}"
+      raise Drill::Error, message
     end
 
     JSON.parse(response.body)
