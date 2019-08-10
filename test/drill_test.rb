@@ -39,6 +39,10 @@ class DrillTest < Minitest::Test
     assert_kind_of Hash, drill.cluster
   end
 
+  def test_metrics
+    assert_kind_of Hash, drill.metrics
+  end
+
   def test_options
     assert_kind_of Array, drill.options
   end

@@ -52,6 +52,11 @@ class Drill
     get("/cluster.json")
   end
 
+  def metrics
+    # no .json suffix
+    get("/status/metrics")
+  end
+
   def options
     get("/options.json")
   end

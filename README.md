@@ -50,6 +50,12 @@ Get cluster info
 drill.cluster
 ```
 
+Get metrics
+
+```ruby
+drill.metrics
+```
+
 Get options
 
 ```ruby
