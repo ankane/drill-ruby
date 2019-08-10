@@ -86,7 +86,7 @@ class Drill
     end
 
     unless response.kind_of?(Net::HTTPSuccess)
-      body = JSON.parse(response.body) rescue nil
+      body = JSON.parse(response.body) rescue {}
       message = body["errorMessage"] || "Bad response: #{response.code}"
       raise Drill::Error, message
     end
