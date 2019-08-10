@@ -4,10 +4,11 @@ Ruby client for Apache Drill
 
 ## Installation
 
-First, [download Apache Drill](https://drill.apache.org/docs/installing-drill-on-linux-and-mac-os-x/). Start it with:
+First, [install Apache Drill](https://drill.apache.org/docs/installing-drill-on-linux-and-mac-os-x/). For Homebrew, use:
 
 ```sh
-bin/drill-embedded
+brew install apache-drill
+drill-embedded
 ```
 
 Then add this line to your application’s Gemfile:
