@@ -36,7 +36,9 @@ class Drill
     result = []
     columns = body["columns"]
     body["rows"].each do |row|
-      result << columns.each_with_object({}) { |c, memo| memo[c] = row[c] }
+      result << columns.each_with_object({}) { |c, memo|
+        memo[c] = row[c].to_f.to_s == row[c] || row[c].to_i.to_s == row[c] ? (row[c].to_f.to_s == row[c] ? row[c].to_f : row[c].to_i) : row[c]
+      }
     end
     result
   end
