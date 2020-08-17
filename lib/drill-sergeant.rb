@@ -17,7 +17,7 @@ class Drill
   def initialize(url: nil, open_timeout: 3, read_timeout: nil)
     url ||= ENV["DRILL_URL"] || "http://localhost:8047"
     # remove trailing slash
-    @uri = URI.parse(url.sub(/\/\z/, ""))
+    @uri = URI.parse(url.chomp("/"))
     @http = Net::HTTP.new(@uri.host, @uri.port)
     @http.use_ssl = true if @uri.scheme == "https"
     @http.open_timeout = open_timeout if open_timeout
