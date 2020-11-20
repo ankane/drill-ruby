@@ -13,7 +13,7 @@ jobs:
     - name: Install Apache Drill
       run: |
         cd /tmp
-        wget https://www-eu.apache.org/dist/drill/drill-$DRILL_VERSION/apache-drill-$DRILL_VERSION.tar.gz
+        wget -q https://www-eu.apache.org/dist/drill/drill-$DRILL_VERSION/apache-drill-$DRILL_VERSION.tar.gz
         tar xfz apache-drill-$DRILL_VERSION.tar.gz
         cd apache-drill-$DRILL_VERSION
         screen -d -m bin/drill-embedded
