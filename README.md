@@ -2,7 +2,7 @@
 
 Ruby client for Apache Drill
 
-[![Build Status](https://travis-ci.org/ankane/drill-sergeant.svg?branch=master)](https://travis-ci.org/ankane/drill-sergeant)
+[![Build Status](https://github.com/ankane/drill-sergeant/workflows/build/badge.svg?branch=master)](https://github.com/ankane/drill-sergeant/actions)
 
 ## Installation
 

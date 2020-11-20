@@ -1,0 +1,23 @@
+name: build
+on: [push, pull_request]
+jobs:
+  build:
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 2.7
+        bundler-cache: true
+    - name: Install Apache Drill
+      run: |
+        cd /tmp
+        wget https://www-eu.apache.org/dist/drill/drill-$DRILL_VERSION/apache-drill-$DRILL_VERSION.tar.gz
+        tar xfz apache-drill-$DRILL_VERSION.tar.gz
+        cd apache-drill-$DRILL_VERSION
+        screen -d -m bin/drill-embedded
+        for i in {1..12}; do wget -O- -v http://127.0.0.1:8047/status && break || sleep 5; done
+      env:
+        DRILL_VERSION: 1.17.0
+    - run: bundle exec rake test
