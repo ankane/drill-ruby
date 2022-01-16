@@ -6,6 +6,7 @@ require "net/http"
 # modules
 require "drill/version"
 
+# TODO make module and move to client
 class Drill
   class Error < StandardError; end
 
