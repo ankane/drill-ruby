@@ -83,6 +83,6 @@ class DrillTest < Minitest::Test
   end
 
   def drill
-    Drill.new(url: "http://localhost:8047")
+    @drill ||= Drill.new(url: "http://localhost:8047")
   end
 end
