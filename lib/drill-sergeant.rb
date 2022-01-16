@@ -25,26 +25,11 @@ class Drill
   end
 
   def query(statement)
-    data = {
-      queryType: "sql",
-      query: statement,
-      options: {"drill.exec.http.rest.errors.verbose": true}
-    }
-
-    body = post("query.json", data)
-
-    # errors return 200 with Drill 2.19+
-    if body["queryState"] == "FAILED"
-      raise Error, body["errorMessage"] || "Query failed"
+    options = {}
+    if Gem::Version.new(server_version) >= Gem::Version.new("1.19.0")
+      options["drill.exec.http.rest.errors.verbose"] = true
     end
-
-    # return columns in order
-    result = []
-    columns = body["columns"]
-    body["rows"].each do |row|
-      result << columns.each_with_object({}) { |c, memo| memo[c] = row[c] }
-    end
-    result
+    run_query(statement, options)
   end
 
   def profiles(query_id = nil)
@@ -70,7 +55,34 @@ class Drill
     get("options.json")
   end
 
+  def server_version
+    @server_version ||= run_query("SELECT version FROM sys.version", {})[0]["version"]
+  end
+
   private
+
+  def run_query(statement, options)
+    data = {
+      queryType: "sql",
+      query: statement,
+      options: options
+    }
+
+    body = post("query.json", data)
+
+    # errors return 200 with Drill 1.19+
+    if body["queryState"] != "COMPLETED"
+      raise Error, body["errorMessage"] || "Bad state: #{body["queryState"]}"
+    end
+
+    # return columns in order
+    result = []
+    columns = body["columns"]
+    body["rows"].each do |row|
+      result << columns.each_with_object({}) { |c, memo| memo[c] = row[c] }
+    end
+    result
+  end
 
   def get(path)
     handle_response do

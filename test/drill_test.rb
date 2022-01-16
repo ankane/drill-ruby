@@ -28,7 +28,7 @@ class DrillTest < Minitest::Test
   end
 
   def test_profiles
-    skip "Failed to get profiles error with Drill 1.18.0"
+    skip "Failed to get profiles error with Drill 1.18.0" if drill.server_version == "1.18.0"
 
     response = drill.profiles
     assert response["finishedQueries"]
