@@ -18,12 +18,16 @@ class DrillTest < Minitest::Test
   end
 
   def test_bad_query
-    error = assert_raises(Drill::Error) { drill.query("SELECT * FROM bad") }
+    error = assert_raises(Drill::Error) do
+      drill.query("SELECT * FROM bad")
+    end
     assert_includes error.message, "Object 'bad' not found"
   end
 
   def test_bad_connection
-    error = assert_raises(Drill::Error) { Drill.new(url: "http://localhost:8048").query(good_query) }
+    error = assert_raises(Drill::Error) do
+      Drill.new(url: "http://localhost:8048").query(good_query)
+    end
     assert_includes error.message, "Failed to open TCP connection"
   end
 
