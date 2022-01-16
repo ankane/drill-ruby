@@ -5,13 +5,17 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        drill: [1.19.0, 1.18.0, 1.17.0]
+        include:
+        - ruby: 3.1
+          drill: 1.19.0
+        - ruby: "3.0"
+          drill: 1.18.0
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 3.1
+        ruby-version: ${{ matrix.ruby }}
         bundler-cache: true
     - name: Install Apache Drill
       run: |
