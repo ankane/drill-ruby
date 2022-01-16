@@ -1,3 +1,7 @@
+## 0.1.4 (unreleased)
+
+- Fixed error with failed queries with Drill 1.19+
+
 ## 0.1.3 (2019-08-10)
 
 - Added more endpoints

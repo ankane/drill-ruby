@@ -35,7 +35,7 @@ class DrillTest < Minitest::Test
   end
 
   def test_profiles_query_id
-    skip "Failed to get profiles error with Drill 1.18.0"
+    skip "Failed to get profiles error with Drill 1.18.0+"
 
     drill.query("SELECT 1")
     query_id = drill.profiles["finishedQueries"][0]["queryId"]

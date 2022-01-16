@@ -2,6 +2,10 @@ name: build
 on: [push, pull_request]
 jobs:
   build:
+    strategy:
+      fail-fast: false
+      matrix:
+        drill: [1.19.0, 1.18.0]
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -18,5 +22,5 @@ jobs:
         screen -d -m bin/drill-embedded
         for i in {1..12}; do wget -O- -v http://127.0.0.1:8047/status && break || sleep 5; done
       env:
-        DRILL_VERSION: 1.19.0
+        DRILL_VERSION: ${{ matrix.drill }}
     - run: bundle exec rake test

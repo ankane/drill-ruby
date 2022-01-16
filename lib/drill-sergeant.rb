@@ -27,10 +27,16 @@ class Drill
   def query(statement)
     data = {
       queryType: "sql",
-      query: statement
+      query: statement,
+      options: {"drill.exec.http.rest.errors.verbose": true}
     }
 
     body = post("query.json", data)
+
+    # errors return 200 with Drill 2.19+
+    if body["queryState"] == "FAILED"
+      raise Error, body["errorMessage"] || "Query failed"
+    end
 
     # return columns in order
     result = []
