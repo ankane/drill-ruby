@@ -6,7 +6,7 @@ Ruby client for Apache Drill
 
 ## Installation
 
-First, [install Apache Drill](https://drill.apache.org/docs/installing-drill-on-linux-and-mac-os-x/). For Homebrew, use:
+First, [install Apache Drill](https://drill.apache.org/docs/install-drill-introduction/). For Homebrew, use:
 
 ```sh
 brew install apache-drill
