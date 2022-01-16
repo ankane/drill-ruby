@@ -1,4 +1,4 @@
-# dependencies
+# stdlib
 require "cgi"
 require "json"
 require "net/http"
