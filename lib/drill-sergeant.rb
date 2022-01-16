@@ -88,13 +88,13 @@ class Drill
     begin
       response = yield
     rescue Errno::ECONNREFUSED => e
-      raise Drill::Error, e.message
+      raise Error, e.message
     end
 
     unless response.kind_of?(Net::HTTPSuccess)
       body = JSON.parse(response.body) rescue {}
       message = body["errorMessage"] || "Bad response: #{response.code}"
-      raise Drill::Error, message
+      raise Error, message
     end
 
     JSON.parse(response.body)
