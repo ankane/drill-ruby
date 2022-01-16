@@ -16,7 +16,7 @@ drill-embedded
 And add this line to your application’s Gemfile:
 
 ```ruby
-gem 'drill-sergeant'
+gem "drill-sergeant"
 ```
 
 ## How to Use
