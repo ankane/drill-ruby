@@ -1,4 +1,4 @@
-## 0.1.4 (unreleased)
+## 0.1.4 (2022-01-16)
 
 - Added `server_version` method
 - Fixed error with failed queries with Drill 1.19+
