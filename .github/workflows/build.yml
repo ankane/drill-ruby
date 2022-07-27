@@ -7,8 +7,10 @@ jobs:
       matrix:
         include:
         - ruby: 3.1
-          drill: 1.19.0
+          drill: 1.20.0
         - ruby: "3.0"
+          drill: 1.19.0
+        - ruby: 2.7
           drill: 1.18.0
     runs-on: ubuntu-latest
     steps:
@@ -20,7 +22,7 @@ jobs:
     - name: Install Apache Drill
       run: |
         cd /tmp
-        wget -q https://www-eu.apache.org/dist/drill/drill-$DRILL_VERSION/apache-drill-$DRILL_VERSION.tar.gz
+        wget -q https://dlcdn.apache.org/drill/drill-$DRILL_VERSION/apache-drill-$DRILL_VERSION.tar.gz
         tar xfz apache-drill-$DRILL_VERSION.tar.gz
         cd apache-drill-$DRILL_VERSION
         screen -d -m bin/drill-embedded
