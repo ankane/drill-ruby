@@ -8,9 +8,7 @@ jobs:
         include:
         - ruby: 3.1
           drill: 1.20.0
-        # - ruby: "3.0"
-        #   drill: 1.19.0
-        # TODO use archive and cache
+        # TODO use archive
         # - ruby: 2.7
         #   drill: 1.18.0
     runs-on: ubuntu-latest
