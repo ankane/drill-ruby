@@ -1,3 +1,7 @@
+## 0.2.0 (unreleased)
+
+- Added support for basic authentication
+
 ## 0.1.4 (2022-01-16)
 
 - Added `server_version` method

@@ -60,6 +60,11 @@ class Drill
     @server_version ||= run_query("SELECT version FROM sys.version", {})[0]["version"]
   end
 
+  # @uri may contain sensitive info
+  def inspect
+    to_s
+  end
+
   private
 
   def run_query(statement, options)
@@ -87,19 +92,23 @@ class Drill
 
   def get(path)
     handle_response do
-      @http.get("#{@uri.request_uri}#{path}", HEADERS)
+      Net::HTTP::Get.new("#{@uri.request_uri}#{path}", HEADERS)
     end
   end
 
   def post(path, data)
     handle_response do
-      @http.post("#{@uri.request_uri}#{path}", data.to_json, HEADERS)
+      req = Net::HTTP::Post.new("#{@uri.request_uri}#{path}", HEADERS)
+      req.body = data.to_json
+      req
     end
   end
 
   def handle_response
     begin
-      response = yield
+      req = yield
+      req.basic_auth(@uri.user, @uri.password) if @uri.user || @uri.password
+      response = @http.request(req)
     rescue Errno::ECONNREFUSED => e
       raise Error, e.message
     end

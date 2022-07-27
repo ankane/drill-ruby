@@ -79,6 +79,12 @@ class DrillTest < Minitest::Test
     assert_kind_of Array, response
   end
 
+  def test_inspect
+    drill = Drill.new(url: "http://user:secret@localhost:8048")
+    refute_match "secret", drill.inspect
+    refute_match "secret", drill.to_s
+  end
+
   private
 
   def good_query(columns: "*")
