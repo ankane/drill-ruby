@@ -8,26 +8,33 @@ jobs:
         include:
         - ruby: 3.1
           drill: 1.20.0
-        - ruby: "3.0"
-          drill: 1.19.0
+        # - ruby: "3.0"
+        #   drill: 1.19.0
         # TODO use archive and cache
         # - ruby: 2.7
         #   drill: 1.18.0
     runs-on: ubuntu-latest
+    env:
+      DRILL_VERSION: ${{ matrix.drill }}
     steps:
     - uses: actions/checkout@v2
     - uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ matrix.ruby }}
         bundler-cache: true
-    - name: Install Apache Drill
+    - uses: actions/cache@v2
+      with:
+        path: ~/drill
+        key: drill-${{ env.DRILL_VERSION }}
+      id: cache-drill
+    - name: Download Drill
+      if: steps.cache-drill.outputs.cache-hit != 'true'
       run: |
-        cd /tmp
         wget -q https://dlcdn.apache.org/drill/drill-$DRILL_VERSION/apache-drill-$DRILL_VERSION.tar.gz
         tar xfz apache-drill-$DRILL_VERSION.tar.gz
-        cd apache-drill-$DRILL_VERSION
-        screen -d -m bin/drill-embedded
+        mv apache-drill-$DRILL_VERSION ~/drill
+    - name: Start Drill
+      run: |
+        screen -d -m ~/drill/bin/drill-embedded
         for i in {1..12}; do wget -O- -v http://127.0.0.1:8047/status && break || sleep 5; done
-      env:
-        DRILL_VERSION: ${{ matrix.drill }}
     - run: bundle exec rake test
