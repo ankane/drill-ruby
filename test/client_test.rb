@@ -1,12 +1,19 @@
 require_relative "test_helper"
 
-class DrillTest < Minitest::Test
+class ClientTest < Minitest::Test
   def test_success
     expected = [
       {"state" => "Ohio", "capital" => "Columbus"},
       {"state" => "California", "capital" => "Sacramento"}
     ]
     assert_equal expected, drill.query(good_query)
+  end
+
+  def test_limit
+    expected = [
+      {"state" => "Ohio", "capital" => "Columbus"}
+    ]
+    assert_equal expected, drill.query(good_query, limit: 1)
   end
 
   def test_column_order

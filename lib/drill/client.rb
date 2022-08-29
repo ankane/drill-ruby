@@ -15,12 +15,21 @@ module Drill
       @http.read_timeout = read_timeout if read_timeout
     end
 
-    def query(statement)
+    def query(statement, limit: nil, default_schema: nil, username: nil)
       options = {}
       if Gem::Version.new(server_version) >= Gem::Version.new("1.19.0")
         options["drill.exec.http.rest.errors.verbose"] = true
       end
-      run_query(statement, options)
+
+      data = {
+        query: statement,
+        options: options
+      }
+      data[:autoLimit] = limit if limit
+      data[:defaultSchema] = default_schema if default_schema
+      data[:userName] = username if username
+
+      run_query(data)
     end
 
     def profiles(query_id = nil)
@@ -47,7 +56,7 @@ module Drill
     end
 
     def server_version
-      @server_version ||= run_query("SELECT version FROM sys.version", {})[0]["version"]
+      @server_version ||= run_query({query: "SELECT version FROM sys.version"})[0]["version"]
     end
 
     # @uri may contain sensitive info
@@ -57,12 +66,8 @@ module Drill
 
     private
 
-    def run_query(statement, options)
-      data = {
-        queryType: "sql",
-        query: statement,
-        options: options
-      }
+    def run_query(data)
+      data[:queryType] ||= "sql"
 
       body = post("query.json", data)
 

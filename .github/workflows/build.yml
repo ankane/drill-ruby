@@ -7,7 +7,7 @@ jobs:
       matrix:
         include:
         - ruby: 3.1
-          drill: 1.20.0
+          drill: 1.20.2
         # TODO use archive
         # - ruby: 2.7
         #   drill: 1.18.0
