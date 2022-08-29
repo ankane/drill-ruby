@@ -4,7 +4,7 @@ Gem::Specification.new do |spec|
   spec.name          = "drill-sergeant"
   spec.version       = Drill::VERSION
   spec.summary       = "Ruby client for Apache Drill"
-  spec.homepage      = "https://github.com/ankane/drill-sergeant"
+  spec.homepage      = "https://github.com/ankane/drill-ruby"
   spec.license       = "MIT"
 
   spec.author        = "Andrew Kane"

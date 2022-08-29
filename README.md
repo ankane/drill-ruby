@@ -1,8 +1,8 @@
-# Drill Sergeant
+# Drill Ruby
 
 Ruby client for Apache Drill
 
-[![Build Status](https://github.com/ankane/drill-sergeant/workflows/build/badge.svg?branch=master)](https://github.com/ankane/drill-sergeant/actions)
+[![Build Status](https://github.com/ankane/drill-ruby/workflows/build/badge.svg?branch=master)](https://github.com/ankane/drill-ruby/actions)
 
 ## Installation
 
@@ -89,22 +89,22 @@ Drill.new(open_timeout: 5, read_timeout: 120)
 
 ## History
 
-View the [changelog](https://github.com/ankane/drill-sergeant/blob/master/CHANGELOG.md)
+View the [changelog](CHANGELOG.md)
 
 ## Contributing
 
 Everyone is encouraged to help improve this project. Here are a few ways you can help:
 
-- [Report bugs](https://github.com/ankane/drill-sergeant/issues)
-- Fix bugs and [submit pull requests](https://github.com/ankane/drill-sergeant/pulls)
+- [Report bugs](https://github.com/ankane/drill-ruby/issues)
+- Fix bugs and [submit pull requests](https://github.com/ankane/drill-ruby/pulls)
 - Write, clarify, or fix documentation
 - Suggest or add new features
 
 To get started with development:
 
 ```sh
-git clone https://github.com/ankane/drill-sergeant.git
-cd drill-sergeant
+git clone https://github.com/ankane/drill-ruby.git
+cd drill-ruby
 bundle install
 bundle exec rake test
 ```
