@@ -99,7 +99,14 @@ drill.disable_storage(name)
 Create or update a storage plugin [unreleased]
 
 ```ruby
-drill.update_storage(name, **config)
+drill.update_storage(
+  name,
+  type: nil,
+  enabled: nil,
+  connection: nil,
+  workspaces: nil,
+  formats: nil
+)
 ```
 
 Delete a storage plugin [unreleased]
