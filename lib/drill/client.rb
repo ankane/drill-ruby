@@ -42,6 +42,24 @@ module Drill
       get(path)
     end
 
+    def update_storage(name, type:, enabled:, connection:, workspaces:, formats:)
+      data = {
+        name: name,
+        config: {
+          type: type,
+          enabled: enabled,
+          connection: connection,
+          workspaces: workspaces,
+          formats: formats
+        }
+      }
+      post("storage/#{escape_path(name)}.json", data)
+    end
+
+    def delete_storage(name)
+      delete("storage/#{escape_path(name)}.json")
+    end
+
     def cluster
       get("cluster.json")
     end
@@ -100,6 +118,12 @@ module Drill
         req = Net::HTTP::Post.new("#{@uri.request_uri}#{path}", HEADERS)
         req.body = data.to_json
         req
+      end
+    end
+
+    def delete(path)
+      handle_response do
+        Net::HTTP::Delete.new("#{@uri.request_uri}#{path}", HEADERS)
       end
     end
 

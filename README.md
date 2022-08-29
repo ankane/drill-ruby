@@ -49,16 +49,28 @@ Get profile by query id
 drill.profiles(query_id)
 ```
 
-Get storage
+Get storage plugins
 
 ```ruby
 drill.storage
 ```
 
-Get storage by name
+Get a storage plugin by name
 
 ```ruby
 drill.storage(name)
+```
+
+Create or update a storage plugin [unreleased]
+
+```ruby
+drill.update_storage(name, **config)
+```
+
+Delete a storage plugin [unreleased]
+
+```ruby
+drill.delete_storage(name)
 ```
 
 Get cluster info

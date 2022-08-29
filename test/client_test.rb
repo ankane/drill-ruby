@@ -71,6 +71,27 @@ class ClientTest < Minitest::Test
     assert_nil response["config"]
   end
 
+  def test_update_storage
+    response =
+      drill.update_storage(
+        "test",
+        type: "file",
+        enabled: true,
+        connection: "file:///",
+        workspaces: {"tmp"=>{"location"=>"/tmp", "writable"=>true, "defaultInputFormat"=>nil, "allowAccessOutsideWorkspace"=>false}},
+        formats: {"json"=>{"type"=>"json", "extensions"=>["json"]}}
+      )
+    assert_equal "Success", response["result"]
+  ensure
+    drill.delete_storage("test")
+  end
+
+  def test_delete_storage_missing
+    assert_raises do
+      drill.delete_storage("missing")
+    end
+  end
+
   def test_cluster
     response = drill.cluster
     assert response["drillbits"]
