@@ -71,6 +71,13 @@ class ClientTest < Minitest::Test
     assert_nil response["config"]
   end
 
+  def test_disable_storage
+    response = drill.disable_storage("cp")
+    assert_equal "Success", response["result"]
+  ensure
+    drill.enable_storage("cp")
+  end
+
   def test_update_storage
     response =
       drill.update_storage(

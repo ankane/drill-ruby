@@ -42,6 +42,14 @@ module Drill
       get(path)
     end
 
+    def enable_storage(name)
+      get("storage/#{escape_path(name)}/enable/true")
+    end
+
+    def disable_storage(name)
+      get("storage/#{escape_path(name)}/enable/false")
+    end
+
     def update_storage(name, type:, enabled:, connection:, workspaces:, formats:)
       data = {
         name: name,

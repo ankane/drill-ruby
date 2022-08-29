@@ -2,6 +2,7 @@
 
 - Added support for basic authentication
 - Added `update_storage` and `delete_storage` methods
+- Added `enable_storage` and `disable_storage` methods
 - Dropped support for Ruby < 2.7
 
 ## 0.1.4 (2022-01-16)

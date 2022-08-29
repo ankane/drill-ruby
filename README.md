@@ -61,6 +61,18 @@ Get a storage plugin by name
 drill.storage(name)
 ```
 
+Enable a storage plugin [unreleased]
+
+```ruby
+drill.enable_storage(name)
+```
+
+Disable a storage plugin [unreleased]
+
+```ruby
+drill.disable_storage(name)
+```
+
 Create or update a storage plugin [unreleased]
 
 ```ruby
