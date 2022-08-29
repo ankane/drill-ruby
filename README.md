@@ -37,25 +37,29 @@ drill.query("SELECT * FROM dfs.`/path/to/some/file.csvh`")
 
 [API docs](https://drill.apache.org/docs/rest-api-introduction/)
 
-Get profiles
+### Profiles
+
+Get profiles of running and completed queries
 
 ```ruby
 drill.profiles
 ```
 
-Get profile by query id
+Get the profile of a query
 
 ```ruby
 drill.profiles(query_id)
 ```
 
-Cancel query [unreleased]
+Cancel a query [unreleased]
 
 ```ruby
 drill.cancel_query(query_id)
 ```
 
-Get storage plugins
+### Storage
+
+List storage plugins
 
 ```ruby
 drill.storage
@@ -90,6 +94,8 @@ Delete a storage plugin [unreleased]
 ```ruby
 drill.delete_storage(name)
 ```
+
+### Info
 
 Get cluster info
 
