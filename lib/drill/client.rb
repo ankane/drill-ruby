@@ -46,10 +46,14 @@ module Drill
       get("cluster.json")
     end
 
+    # status does not return json
+
     def metrics
       # no .json suffix
       get("status/metrics")
     end
+
+    # threads does not return json
 
     def options
       get("options.json")
