@@ -28,7 +28,7 @@ jobs:
     - name: Download Drill
       if: steps.cache-drill.outputs.cache-hit != 'true'
       run: |
-        wget -q https://dlcdn.apache.org/drill/drill-$DRILL_VERSION/apache-drill-$DRILL_VERSION.tar.gz
+        wget -q https://dlcdn.apache.org/drill/drill/$DRILL_VERSION/apache-drill-$DRILL_VERSION.tar.gz
         tar xfz apache-drill-$DRILL_VERSION.tar.gz
         mv apache-drill-$DRILL_VERSION ~/drill
     - name: Start Drill
