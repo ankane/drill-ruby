@@ -64,7 +64,7 @@ Get the profile of a query
 drill.profiles(query_id)
 ```
 
-Cancel a query [unreleased]
+Cancel a query
 
 ```ruby
 drill.cancel_query(query_id)
@@ -84,19 +84,19 @@ Get a storage plugin by name
 drill.storage(name)
 ```
 
-Enable a storage plugin [unreleased]
+Enable a storage plugin
 
 ```ruby
 drill.enable_storage(name)
 ```
 
-Disable a storage plugin [unreleased]
+Disable a storage plugin
 
 ```ruby
 drill.disable_storage(name)
 ```
 
-Create or update a storage plugin [unreleased]
+Create or update a storage plugin
 
 ```ruby
 drill.update_storage(
@@ -109,7 +109,7 @@ drill.update_storage(
 )
 ```
 
-Delete a storage plugin [unreleased]
+Delete a storage plugin
 
 ```ruby
 drill.delete_storage(name)

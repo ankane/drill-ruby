@@ -1,4 +1,4 @@
-## 0.2.0 (unreleased)
+## 0.2.0 (2022-08-28)
 
 - Added support for basic authentication
 - Added `update_storage` and `delete_storage` methods
