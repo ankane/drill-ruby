@@ -39,8 +39,6 @@ class ClientTest < Minitest::Test
   end
 
   def test_profiles
-    skip "Failed to get profiles error with Drill 1.18.0+"
-
     response = drill.profiles
     assert response["finishedQueries"]
   end
@@ -52,6 +50,13 @@ class ClientTest < Minitest::Test
     query_id = drill.profiles["finishedQueries"][0]["queryId"]
     response = drill.profiles(query_id)
     assert response
+  end
+
+  def test_cancel_query
+    skip "todo: fix"
+
+    query_id = drill.profiles["finishedQueries"][0]["queryId"]
+    drill.cancel_query(query_id)
   end
 
   def test_storage

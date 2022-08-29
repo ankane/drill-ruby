@@ -49,6 +49,12 @@ Get profile by query id
 drill.profiles(query_id)
 ```
 
+Cancel query
+
+```ruby
+drill.cancel_query(query_id)
+```
+
 Get storage plugins
 
 ```ruby

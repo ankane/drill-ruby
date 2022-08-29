@@ -37,6 +37,10 @@ module Drill
       get(path)
     end
 
+    def cancel_query(query_id)
+      get("profiles/cancel/#{escape_path(query_id)}")
+    end
+
     def storage(name = nil)
       path = name ? "storage/#{escape_path(name)}.json" : "storage.json"
       get(path)
