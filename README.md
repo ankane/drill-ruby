@@ -49,7 +49,7 @@ Get profile by query id
 drill.profiles(query_id)
 ```
 
-Cancel query
+Cancel query [unreleased]
 
 ```ruby
 drill.cancel_query(query_id)
