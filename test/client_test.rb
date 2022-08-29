@@ -3,7 +3,7 @@ require_relative "test_helper"
 class ClientTest < Minitest::Test
   def test_bad_connection
     error = assert_raises(Drill::Error) do
-      Drill.new(url: "http://localhost:8048").query("SELECT 1")
+      Drill::Client.new(url: "http://localhost:8048").query("SELECT 1")
     end
     assert_includes error.message, "Failed to open TCP connection"
   end
@@ -24,7 +24,7 @@ class ClientTest < Minitest::Test
   end
 
   def test_inspect
-    drill = Drill.new(url: "http://user:secret@localhost:8048")
+    drill = Drill::Client.new(url: "http://user:secret@localhost:8048")
     refute_match "secret", drill.inspect
     refute_match "secret", drill.to_s
   end

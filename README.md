@@ -24,7 +24,7 @@ gem "drill-sergeant"
 Create a client
 
 ```ruby
-drill = Drill.new(url: "http://localhost:8047")
+drill = Drill::Client.new(url: "http://localhost:8047")
 ```
 
 And query away
@@ -133,7 +133,7 @@ drill.options
 Set timeouts
 
 ```ruby
-Drill.new(open_timeout: 5, read_timeout: 120)
+Drill::Client.new(open_timeout: 5, read_timeout: 120)
 ```
 
 ## History

@@ -5,6 +5,6 @@ require "minitest/pride"
 
 class Minitest::Test
   def drill
-    @drill ||= Drill.new
+    @drill ||= Drill::Client.new
   end
 end
