@@ -19,7 +19,7 @@ And add this line to your application’s Gemfile:
 gem "drill-sergeant"
 ```
 
-## How to Use
+## Getting Started
 
 Create a client
 
@@ -36,6 +36,19 @@ drill.query("SELECT * FROM dfs.`/path/to/some/file.csvh`")
 ## Endpoints
 
 [API docs](https://drill.apache.org/docs/rest-api-introduction/)
+
+### Query
+
+Run a query
+
+```ruby
+drill.query(
+  query,
+  limit: nil,
+  default_schema: nil,
+  username: nil
+)
+```
 
 ### Profiles
 
