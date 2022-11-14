@@ -15,12 +15,12 @@ jobs:
     env:
       DRILL_VERSION: ${{ matrix.drill }}
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ matrix.ruby }}
         bundler-cache: true
-    - uses: actions/cache@v2
+    - uses: actions/cache@v3
       with:
         path: ~/drill
         key: drill-${{ env.DRILL_VERSION }}
