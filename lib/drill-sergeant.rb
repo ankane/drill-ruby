@@ -4,8 +4,8 @@ require "json"
 require "net/http"
 
 # modules
-require "drill/client"
-require "drill/version"
+require_relative "drill/client"
+require_relative "drill/version"
 
 module Drill
   class Error < StandardError; end
