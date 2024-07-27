@@ -2,7 +2,7 @@
 
 Ruby client for Apache Drill
 
-[![Build Status](https://github.com/ankane/drill-ruby/workflows/build/badge.svg?branch=master)](https://github.com/ankane/drill-ruby/actions)
+[![Build Status](https://github.com/ankane/drill-ruby/actions/workflows/build.yml/badge.svg)](https://github.com/ankane/drill-ruby/actions)
 
 ## Installation
 
