@@ -1,3 +1,7 @@
+## 0.3.0 (unreleased)
+
+- Dropped support for Ruby < 3.1
+
 ## 0.2.0 (2022-08-28)
 
 - Added support for basic authentication
