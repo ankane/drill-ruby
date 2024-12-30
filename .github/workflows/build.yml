@@ -6,7 +6,7 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - ruby: 3.3
+          - ruby: 3.4
             drill: 1.21.2
           # TODO use archive
           # - ruby: 2.7
